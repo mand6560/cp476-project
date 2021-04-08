@@ -26,7 +26,7 @@
 
     <body>
         <div class="header">
-            <h1 style="text-align:center">StudentSaver</h1>
+            <h1>StudentSaver</h1>
             <hr />
         </div>
 
