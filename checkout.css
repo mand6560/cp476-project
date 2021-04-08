@@ -1,0 +1,18 @@
+table {
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+
+.body-container {
+    width: 100%;
+}
+
+.shipping {
+    width: 50%;
+    float: left;
+}
+
+.billing {
+    width: 50%;
+    float: left;
+}
