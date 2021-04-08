@@ -1,0 +1,23 @@
+Customer:
+customer_id - int
+name - str
+email - str
+pass_hash - str
+cart_contents[] - array of int (book_id)
+
+Products:
+book_id - int
+title - str
+author - str
+isbn - str
+price - double
+stock - int
+subject - str
+
+
+Subjects:
+math
+science
+english
+history
+geography

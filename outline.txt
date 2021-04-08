@@ -10,3 +10,13 @@
 - checkout page (checkout.php)
 	- fill out shipping, billing info
 	- checkout and update stock numbers
+
+
+connect.php -> returns connection to mongodb
+dbQuery.php -> contains class for query the DB and returning a list of books
+checkout.php -> querys list of books in cart from database, then uses seach to get all of the info and returns it
+
+
+returned from dbQuery:
+title, author, ISBN, subject, description, price, stock
+
