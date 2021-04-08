@@ -13,6 +13,7 @@ isbn - str
 price - double
 stock - int
 subject - str
+description - str
 
 
 Subjects:
