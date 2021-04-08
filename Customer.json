@@ -1,0 +1,30 @@
+[
+    {
+        "customer_id": 1,
+        "name": "Alice Smith",
+        "email": "alicesmith@gmail.com",
+        "pass_hash": "cbfdac6008f9cab4083784cbd1874f76618d2a97",
+        "cart_contents": []
+    },
+    {
+        "customer_id": 2,
+        "name": "Bob Jones",
+        "email": "bobjones@gmail.com",
+        "pass_hash": "cbfdac6008f9cab4083784cbd1874f76618d2a97",
+        "cart_contents": [1]
+    },
+    {
+        "customer_id": 3,
+        "name": "Eve Brown",
+        "email": "evebrown@gmail.com",
+        "pass_hash": "cbfdac6008f9cab4083784cbd1874f76618d2a97",
+        "cart_contents": [4, 5]
+    },
+    {
+        "customer_id": 3,
+        "name": "Sarah Miller",
+        "email": "sarahmiller@gmail.com",
+        "pass_hash": "cbfdac6008f9cab4083784cbd1874f76618d2a97",
+        "cart_contents": [2, 4, 6]
+    }
+]

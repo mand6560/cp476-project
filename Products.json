@@ -1,0 +1,252 @@
+[
+    {
+        "book_id": 1,
+        "title": "Calculus: Early Transcendentals",
+        "author": "James Stewart",
+        "isbn": "978-1285741550",
+        "price": 149.99,
+        "stock": 55,
+        "subject": "math",
+        "description" : "Success in your calculus course starts here! James Stewart's CALCULUS: EARLY TRANSCENDENTALS texts are world-wide best-sellers for a reason: they are clear, accurate, and filled with relevant, real-world examples. With CALCULUS: EARLY TRANSCENDENTALS, Eighth Edition, Stewart conveys not only the utility of calculus to help you develop technical competence, but also gives you an appreciation for the intrinsic beauty of the subject. His patient examples and built-in learning aids will help you build your mathematical confidence and achieve your goals in the course."
+    },
+    {
+        "book_id": 2,
+        "title": "Linear Algebra",
+        "author": "Georgi E. Shilov",
+        "isbn": "978-0486635187",
+        "price": 14.99,
+        "stock": 4,
+        "subject": "math",
+        "description" : "In this volume in his exceptional series of translations of Russian mathematical texts, Richard Silverman has taken Shilov's course in linear algebra and has made it even more accessible and more useful for English language readers. Georgi E. Shilov, Professor of Mathematics at the Moscow State University, covers determinants, linear spaces, systems of linear equations, linear functions of a vector argument, coordinate transformations, the canonical form of the matrix of a linear operator, bilinear and quadratic forms, Euclidean spaces, unitary spaces, quadratic forms in Euclidean and unitary spaces, finite-dimensional algebras and their representations, with an appendix on categories of finite-dimensional spaces. The author begins with elementary material and goes easily into the advanced areas, covering all the standard topics of an advanced undergraduate or beginning graduate course. The material is presented in a consistently clear style. Problems are included, with a full section of hints and answers in the back. Keeping in mind the unity of algebra, geometry and analysis in his approach, and writing practically for the student who needs to learn techniques, Professor Shilov has produced one of the best expositions on the subject. Because it contains an abundance of problems and examples, the book will be useful for self-study as well as for the classroom."
+    },
+    {
+        "book_id": 3,
+        "title": "Statistics: A Tool for Social Research",
+        "author": "Joseph Healey",
+        "isbn": "978-0176725082",
+        "price": 49.99,
+        "stock": 2,
+        "subject": "math",
+        "description" : "Statistics: A Tool for Social Research, Fourth Canadian Edition, helps to construct and develop the skills necessary for social science majors to become statistically literate―computational competence, appreciation of statistics, and the ability to read professional social science literature―from a uniquely Canadian perspective. To do so, the text provides a comprehensive, yet exceptionally accessible and reader-friendly discussion of statistics that is appropriate for students with varying levels of mathematical skill, ranging from those who battle statistical “anxiety” to those adept at math. The text provides an introduction to the fundamental concepts of statistics in an easy-to-follow, step-by-step process, and equally stresses hand-based calculation and interpretation of statistics. Students learn to use and interpret statistics in a variety of settings, with most examples, demonstrations, and applications of statistics intended for a diversity of Canadian social issues and social science disciplines, including sociology, political science, social work, public administration, criminology and criminal justice, and gerontology. By providing a solid grounding in both traditional formulas and the use of the latest SPSS statistical software package, Healey and Prus help students to master key statistical concepts and hone the skills they will need to succeed as professionals in a social science field--or simply to become statistically literate, intelligent consumers of social research."
+    },
+    {
+        "book_id": 4,
+        "title": "Game Theory: Decisions, Interaction and Evolution",
+        "author": "James N. Webb",
+        "isbn": "978-1846284236",
+        "price": 19.99,
+        "stock": 0,
+        "subject": "math",
+        "description" : "The outstanding feature of this book is that it provides a unified account of three types of decision problem. It covers the basic ideas of decision theory, classical game theory, and evolutionary game theory in one volume. No background knowledge of economics or biology is required as examples have been carefully selected for their accessibility. Detailed solutions to the numerous exercises are provided at the back of the book, making it ideal for self-study. This introduction to game theory is intended as a first course for undergraduate students of mathematics, but it will also interest advanced students or researchers in biology and economics."
+    },
+    {
+        "book_id": 5,
+        "title": "Introduction to Graph Theory",
+        "author": "Richard J. Trudeau",
+        "isbn": "978-0486678702",
+        "price": 9.99,
+        "stock": 1,
+        "subject": "math",
+        "description" : "A stimulating excursion into pure mathematics aimed at the mathematically traumatized, but great fun for mathematical hobbyists and serious mathematicians as well. Requiring only high school algebra as mathematical background, the book leads the reader from simple graphs through planar graphs, Euler's formula, Platonic graphs, coloring, the genus of a graph, Euler walks, Hamilton walks, and a discussion of The Seven Bridges of Konigsberg. Exercises are included at the end of each chapter. The topics are so well motivated, the exposition so lucid and delightful, that the book's appeal should be virtually universal . . . Every library should have several copies — Choice. 1976 edition."
+    },
+    {
+        "book_id": 6,
+        "title": "Chemistry",
+        "author": "John A. Olmsted",
+        "isbn": "978-1119133353",
+        "price": 139.99,
+        "stock": 15,
+        "subject": "science",
+        "description" : "Olmsted/Burk is an introductory general chemistry text designed specifically with Canadian professors and students in mind. A reorganized Table of Contents and inclusion of SI units, IUPAC standards, and Canadian content designed to engage and motivate readers distinguish this text from many of the current text offerings. It more accurately reflects the curriculum of most Canadian institutions. Instructors will find the text sufficiently rigorous while it engages and retains student interest through its accessible language and clear problem solving program without an excess of material that makes most text appear daunting and redundant."
+    },
+    {
+        "book_id": 7,
+        "title": "Physics (5th Edition)",
+        "author": "James S. Walker",
+        "isbn": "978-1119133353",
+        "price": 139.99,
+        "stock": 9,
+        "subject": "science",
+        "description" : "An accessible, problem-solving approach to physics, grounded in real-world applications. James Walker’s Physics provides students with a solid conceptual understanding of physics that can be expressed quantitatively and applied to the world around them. Instructors and students praise Walker’s Physics for its friendly voice, the author’s talent for making complex concepts understandable, an inviting art program, and the range of excellent homework problems and example-types that provide guidance with problem solving. The Fifth Edition includes new “just-in-time” learning aids such as “Big Ideas” to quickly orient students to the overarching principles of each chapter, new Real-World Physics and Biological applications, and a wealth of problem-solving support features to coach students through the process of applying logic and reasoning to problem solving."
+    },
+    {
+        "book_id": 8,
+        "title": "Biology: Exploring the Diversity of Life",
+        "author": "Peter Russell",
+        "isbn": "978-0176718886",
+        "price": 109.99,
+        "stock": 2,
+        "subject": "science",
+        "description" : "Biology: Exploring the Diversity of Life is uniquely designed for today’s Canadian biology student. The intention of this introductory biology text is to capture students’ imaginations and evoke a sense of curiosity about the vast world of biology. To facilitate immediately immersing students in biology, the text puts the review of chemistry and biochemistry in a distinct section called the Purple Pages, to be easily referenced when needed. The authors have taken great care to encourage critical thinking and learning with engaging visuals and by integrating the material across the book’s chapters. With a focus on the Canadian biology student, the text approaches the material with a readable style that instills a sense of wonder by using examples from across the spectrum of biodiversity, showcasing Canadian research and innovation, and highlighting an array of career options that stem from biology. The text engages students in the science and future of biological science with effective pedagogy, streamlined content, a comprehensive MindTap, and a focus on research and experimentation that creates a complete biology learning solution."
+    },
+    {
+        "book_id": 9,
+        "title": "Environmental Science: Toward A Sustainable Future",
+        "author": "Richard T. Wright",
+        "isbn": "978-0133945911",
+        "price": 49.99,
+        "stock": 18,
+        "subject": "science",
+        "description" : "The 13th Edition of Environmental Science: Toward a Sustainable Future retains its current content and memorable themes of Science, Sustainability and Stewardship while expanding on the reader-friendly approach with built-in tools that make Wright/Boorse a bestseller. Presenting the most current and relevant Environmental Science issues and research along with new Concept Check questions and Understand the Data questions, the text and Mastering Environmental Science work together to help readers understand the science behind environmental issues."
+    },
+    {
+        "book_id": 10,
+        "title": "Psychology",
+        "author": "David G. Myers",
+        "isbn": "978-1319132101",
+        "price": 209.99,
+        "stock": 1,
+        "subject": "science",
+        "description" : "From its beginnings to this remarkably fresh and current new edition, Myers and DeWall's Psychology has found extraordinarily effective ways to involve students with the remarkable research underlying our understanding of human behavior. But while the content and learning support evolves edition after edition, the text itself continues to be shaped by basic goals David Myers established at the outset, including to connect students to high-impact research, to focus on developing critical thinking skills, and to present a multicultural perspective on psychology, so students can see themselves in the context of a wider world."
+    },
+    {
+        "book_id": 11,
+        "title": "ESL Intermediate/Advanced Grammar",
+        "author": "Mary Ellen Munoz Page",
+        "isbn": "978-0738601014",
+        "price": 9.99,
+        "stock": 2,
+        "subject": "english",
+        "description" : "Designed for intermediate and advanced high school- and college-level non-native speakers of English who need to improve their ESL (English as a Second Language) grammar skills. ESL Intermediate/Advanced Grammar provides students with simple explanations of grammar, skill-building exercises, detailed answer keys, and test-taking techniques. It's the perfect companion for classroom use or self-guided studies in ESL."
+    },
+    {
+        "book_id": 12,
+        "title": "Romeo and Juliet: No Fear Shakespeare",
+        "author": "Sterling Publishing Co. Ltd.",
+        "isbn": "978-1586638450",
+        "price": 3.99,
+        "stock": 50,
+        "subject": "english",
+        "description" : "Read Shakespeare’s plays in all their brilliance—and understand what every word means! Don’t be intimidated by Shakespeare! These popular guides make the Bard’s plays accessible and enjoyable."
+    },
+    {
+        "book_id": 13,
+        "title": "The Merchant of Venice (No Fear Shakespeare)",
+        "author": "SparkNotes",
+        "isbn": "978-1586638504",
+        "price": 3.99,
+        "stock": 34,
+        "subject": "english",
+        "description" : "Read Shakespeare’s plays in all their brilliance—and understand what every word means! Don’t be intimidated by Shakespeare! These popular guides make the Bard’s plays accessible and enjoyable."
+    },
+    {
+        "book_id": 14,
+        "title": "Twelfth Night (No Fear Shakespeare) (Volume 8)",
+        "author": "SparkNotes",
+        "isbn": "978-1586638511",
+        "price": 4.99,
+        "stock": 0,
+        "subject": "english",
+        "description" : "Read Shakespeare’s plays in all their brilliance—and understand what every word means! Don’t be intimidated by Shakespeare! These popular guides make the Bard’s plays accessible and enjoyable."
+    },
+    {
+        "book_id": 15,
+        "title": "Julius Caesar (No Fear Shakespeare) (Volume 4)",
+        "author": "SparkNotes",
+        "isbn": "978-1586638474",
+        "price": 4.99,
+        "stock": 19,
+        "subject": "english",
+        "description" : "Read Shakespeare’s plays in all their brilliance—and understand what every word means! Don’t be intimidated by Shakespeare! These popular guides make the Bard’s plays accessible and enjoyable."
+    },
+    {
+        "book_id": 16,
+        "title": "The History of the World",
+        "author": "J. M. Roberts",
+        "isbn": "978-0199936762",
+        "price": 24.99,
+        "stock": 23,
+        "subject": "history",
+        "description" : "J.M. Roberts's renowned History of the World is widely considered the finest available one-volume survey of the major events, developments, and personalities of the known past, offering generations of readers a tour of the vast landscape of human history."
+    },
+    {
+        "book_id": 17,
+        "title": "A History of East Asia: From the Origins of Civilization to the Twenty-First Century",
+        "author": "Charles Holcombe",
+        "isbn": "978-1107544895",
+        "price": 27.99,
+        "stock": 1,
+        "subject": "history",
+        "description" : "Charles Holcombe begins by asking the question 'what is East Asia?' In the modern age, many of the features that made the region - now defined as including China, Japan, Korea and Vietnam - distinct have been submerged by the effects of revolution, politics or globalization. Yet, as an ancient civilization, the region had both an historical and cultural coherence. This shared past is at the heart of this ambitious book, which traces the story of East Asia from the dawn of history to the twenty-first century. The second edition has been imaginatively revised and expanded to place emphasis on cross-cultural interactions and connections, both within East Asia and beyond, with new material on Vietnam and modern pop culture. The second edition also features a Chinese character list, additional maps and new illustrations."
+    },
+    {
+        "book_id": 18,
+        "title": "A History of the Baltic States",
+        "author": "Andres Kasekamp",
+        "isbn": "978-1137573643",
+        "price": 19.99,
+        "stock": 14,
+        "subject": "history",
+        "description" : "Estonia, Latvia and Lithuania experienced a sequence of foreign regimes, including Nazism and communism, before recovering their independence and joining the European Union. This is a thoroughly updated new edition of Kasekamp's history of the region, providing an engaging comparative overview of these countries from the stone age to the present."
+    },
+    {
+        "book_id": 19,
+        "title": "A History of the Roman Republic",
+        "author": "Klaus Bringmann",
+        "isbn": "978-0745633718",
+        "price": 14.99,
+        "stock": 22,
+        "subject": "history",
+        "description" : "In this new and authoritative history of the Roman republic, distinguished historian Klaus Bringmann traces the rise of a small city state near the Tiber estuary into a power that controlled the Italian peninsula and created the final Empire of antiquity, an Empire that was to become both the most enduring in the ancient world and to have the most far-reaching consequences for posterity."
+    },
+    {
+        "book_id": 20,
+        "title": "The Cambridge Illustrated History of China",
+        "author": "Patricia Buckley Ebrey",
+        "isbn": "978-0521124331",
+        "price": 24.99,
+        "stock": 7,
+        "subject": "history",
+        "description" : "More populous than any other country on earth, China also occupies a unique place in our modern world for the continuity of its history and culture. In this sumptuously illustrated single-volume history, now in its second edition, noted historian Patricia Buckley Ebrey traces the origins of Chinese culture from prehistoric times to the present. She follows its development from the rise of Confucianism, Buddhism, and the great imperial dynasties to the Mongol, Manchu, and Western intrusions and the modern communist state. Her scope is phenomenal – embracing Chinese arts, culture, economics, society and its treatment of women, foreign policy, emigration, and politics, including the key uprisings of 1919 and 1989 in Tiananmen Square. Both a comprehensive introduction to an extraordinary civilization and an expert exploration of the continuities and disjunctures of Chinese history, Professor Ebrey’s book has become an indispensable guide to China past and present. This second edition includes a new chapter on China’s recent opening to the world and a fully revised guide to further reading."
+    },
+    {
+        "book_id": 21,
+        "title": "Economic Geography: A Contemporary Introduction",
+        "author": "Neil M. Coe",
+        "isbn": "978-1119389552",
+        "price": 34.99,
+        "stock": 12,
+        "subject": "geography",
+        "description" : "Economic Geography is an engaging and accessible introduction to the different ways modern economic geographers understand, analyze, and interpret economic processes. This comprehensive text addresses significant questions relevant to contemporary economic life, from the activities of transnational corporations to issues surrounding workplaces and consumption. It encourages readers to explore how spatial patterns, places, networks, and territories shape large-scale economic processes. Accessible, highly-illustrated material presents fresh insights from the field—complemented by relatable, real-world examples that help students understand the social, cultural, and political contexts underpinning global economic processes."
+    },
+    {
+        "book_id": 22,
+        "title": "Geography: Realms, Regions, and Concepts, 18e",
+        "author": "Jan Nijman",
+        "isbn": "978-1119607410",
+        "price": 129.99,
+        "stock": 3,
+        "subject": "geography",
+        "description" : "Since its first appearance, Geography: Realms, Regions, and Concepts has consistently broken new ground in the interpretation and teaching of world regional geography. For more than four decades, REGIONS, as it has come to be called, has explained the contemporary world’s geographic realms and their natural environments and human dimensions.  The authors look at the ways people have organized their living space, adapted to changing social as well as environmental circumstances, and continue to confront forces largely beyond their control ranging from globalization to climate change."
+    },
+    {
+        "book_id": 23,
+        "title": "The Regional Geography of Canada",
+        "author": "Robert M. Bone",
+        "isbn": "978-0199021291",
+        "price": 99.99,
+        "stock": 6,
+        "subject": "geography",
+        "description" : "This extensively revised and updated edition is the most thorough and relevant introduction to Canadian regional geography available. Identifying and exploring Canada's six regions - Atlantic Canada, Quebec, Ontario, Western Canada, British Columbia, and the Territorial North - author Robert Bone guides students through the basic physical, historical, cultural, social, and economic features of each region, nurturing an appreciation of this country's amazing diversity."
+    },
+    {
+        "book_id": 24,
+        "title": "National Geographic Atlas of the World, 11th Edition",
+        "author": "National Geographic",
+        "isbn": "978-1426220586",
+        "price": 119.99,
+        "stock": 22,
+        "subject": "geography",
+        "description" : "National Geographic's flagship Atlas of the World, now in its 11th edition, provides authoritative maps of every country, ocean, and region of the world, as well as thematic maps and accompanying graphics showing important population, environmental, and economic patterns. Organized by continent and reflecting today's political boundaries and identities, this authoritative atlas is an indispensable reference for schools and libraries, as well as the latest resource for home browsing and study. A thematically organized opening section uses current data to visualize urgent concerns, such as Earth's last wild places, changing freshwater availability, human migration and refugee movement, and human rights conditions globally. The back of the book contains basic facts and flags of every country, as well as a comprehensive index cross-referencing more than 150,000 place names. A thought-provoking foreword by Alexander M. Tait, The Geographer of National Geographic, begins the book."
+    },
+    {
+        "book_id": 25,
+        "title": "Africa: A Teacher's Guide: Ethnography, Geography, History, Culture, Stories, Art",
+        "author": "Betty K Staley",
+        "isbn": "978-0692855065",
+        "price": 39.99,
+        "stock": 0,
+        "subject": "geography",
+        "description" : "Africa: A Teacher's Guide and Art is a carefully organized resource for teaching children and adolescents about African culture. This book is divided into geographical regions so each can be highlighted and contrasted. The songs, fairy tales, mythologies, biographies, art, and recipes are highlighted with practical activities for each grade including kindergarten. This is an invaluable book for teachers in elementary and high school as well as for home school parents. Based on this extensive, well-researched book, Waldorf teachers have created a full unit on Africa. Teachers and parents will welcome this updated and expanded 2017 edition of the successful book, Hear the Voice of the Griot!"
+    }
+]
