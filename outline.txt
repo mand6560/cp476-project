@@ -20,3 +20,11 @@ checkout.php -> querys list of books in cart from database, then uses seach to g
 returned from dbQuery:
 title, author, ISBN, subject, description, price, stock
 
+Patrick: Setting up DB and checkout.php
+Rob: search.php
+Hayden: dbQuery.php
+
+remaining:
+integrating together
+index.php
+documentation
