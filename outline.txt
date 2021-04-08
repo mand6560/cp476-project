@@ -2,6 +2,7 @@
 	- list books in categories
 	- dynamic html
 	- search bar
+	- sign in and register
 - search results page (search.php)
 	- search for book title, author, etc.
 - book detail page (book-detail.php)
