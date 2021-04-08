@@ -1,0 +1,81 @@
+CP476 Project: StudentSaver Webstore
+Hayden Jeanson - 170482540
+Rob Fedorowicz - 170783690
+Patrick Mandarino - 181466560
+2021-03-22
+Introduction
+The price of textbooks is a huge barrier for students pursuing a post-secondary education. Our store will allow students to acquire used textbooks online in a simple and cheap fashion. College and university textbooks will be sold to students at a lower rate than traditional bookstores and other online retailers. 
+Customers will be able to browse for textbooks by course category (math, english, science, etc.). For customers who know what they want, the catalogue can also be searched by title, author, or publication date. 
+Problem solving and algorithms
+
+Problem
+Solution
+Storing indexable information on textbooks
+A MongoDB database collection with information on the books and stock levels.
+Creating a checkout experience
+Form with text fields to collect shipping and credit card information. The site will validate that it is all entered. No payments are actually processed for this course project.
+Shopping cart
+Each shopping cart will be tied to a user’s account. The account collection in MongoDB will have an array field that stores ids of products in their cart and their quantities.
+Account management
+Another MongoDB database collection to store the customers usernames and passwords, along with their current shopping cart items
+Front-end catalogue
+HTML, CSS, and Javascript will be used to render the front-end catalogue.
+
+System Design
+
+Our web application will be made up of three layers:
+HTML, CSS, and Javascript for front-end
+PHP server/backend
+MongoDB database layer
+
+The following diagram illustrates the relationship between the multiple layers:
+
+
+
+
+For the Database layer, the makeup of the structure of the MongoDB database is shown below:
+
+The following is the general flow of how a user would interact with our website:
+Upon arriving at the website, the user would first register for an account, hence adding their information to the database, specifically the User collection.
+From there, they can browse through our inventory of textbooks, either by category, or they can search by title, author, etc.
+The user will add the books they want to their cart. The current state of a user’s cart is stored in their entry in the database, along with their personal information.
+When they are ready to checkout, they will click on a “checkout” button and proceed through the checkout process.
+They will fill out their billing and shipping information, and place their order.
+Milestones & schedule
+
+Task ID
+Description
+Due date
+Lead
+1
+Project research & team up
+Day 5 of week 9
+All
+2
+Project proposal
+Day 1 of week 10
+Patrick
+3
+Database set up and working
+Day 7 of week 10
+Patrick
+4
+Back end PHP CGI completed and working
+Day 5 of week 11
+Hayden
+5
+Front end HTML CSS working
+Day 2 of week 12
+Rob
+6
+Project demonstration
+Day 5 of week 12
+All
+7
+Project submission
+Day 5 of week 13
+Patrick
+
+References
+Our inspiration - https://www.vox.com/the-goods/2019/3/6/18252322/college-textbooks-cost-expensive-pearson-cengage-mcgraw-hill
+
