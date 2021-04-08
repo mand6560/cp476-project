@@ -1,0 +1,7 @@
+Follow steps EXACTLY, including case on names :P
+
+1. create new db called studentsaver
+2. create new collection called Customer
+3. create new collection called Products
+4. mongoimport --db studentsaver --collection Customer --file Customer.json --jsonArray
+5. mongoimport --db studentsaver --collection Products --file Products.json --jsonArray
