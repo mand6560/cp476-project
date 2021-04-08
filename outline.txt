@@ -1,0 +1,11 @@
+- home page (index.php)
+	- list books in categories
+	- dynamic html
+	- search bar
+- search results page (search.php)
+	- search for book title, author, etc.
+- book detail page (book-detail.php)
+	- show book info and allow adding to cart
+- checkout page (checkout.php)
+	- fill out shipping, billing info
+	- checkout and update stock numbers
