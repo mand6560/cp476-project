@@ -74,10 +74,14 @@
 
             <div class="billing">
                 <h2 style="text-align:center">Billing Address:</h2>
-                <input type="checkbox" id="billing-box", onclick='billingCheckboxClicked(this);'>
-                <label for="billing-box">Same as shipping address</label>
                 <table>
                     <tbody>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="billing-box", onclick='billingCheckboxClicked(this);'>
+                                <label for="billing-box">Same as shipping address</label>
+                            </td>
+                        </tr>
                         <tr>
                             <td>First Name: </td>
                             <td><input size="30" id="bill-first"> </td>

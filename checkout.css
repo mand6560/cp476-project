@@ -1,17 +1,23 @@
 body {
     background-color: lightblue;
     font-family: 'Courier New', Courier, monospace;
-    font-size: small;
+    font-size: large;
+    width: 100%;
+}
+
+hr {
+    border: 1px solid white;
 }
 
 .header {
     text-align: center;
-    font-size: large;
+    font-size: larger;
 }
 
 table {
     border-collapse: separate;
     border-spacing: 0 15px;
+    margin: 0 auto;
 }
 
 .body-container {
