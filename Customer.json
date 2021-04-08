@@ -21,7 +21,7 @@
         "cart_contents": [4, 5]
     },
     {
-        "customer_id": 3,
+        "customer_id": 4,
         "name": "Sarah Miller",
         "email": "sarahmiller@gmail.com",
         "pass_hash": "cbfdac6008f9cab4083784cbd1874f76618d2a97",
