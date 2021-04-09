@@ -32,7 +32,47 @@
 
         <div class="cart">
             <h2>Your Books:</h2>
-            <p>Cart items will go here...</p>
+            <table style="width: 100%">
+                <tr style="font-weight:bold">
+                    <td>Title</td>
+                    <td>Author</td>
+                    <td>Price</td>
+                </tr>
+
+                <?php
+                include_once 'MDBManager.php';
+
+                $dbname = 'studentsaver';
+                $collection = 'Customer';
+
+                //TEMP - WILL RETRIEVE LATER
+                $customer_id = 4;
+
+                $dbm = new MDBManager();
+                $conn = $dbm->getConnection();
+
+                // get all
+                $filter = ['customer_id' => $customer_id];
+                $option = [];
+                $read = new MongoDB\Driver\Query($filter, $option);
+                $customer_info = $conn->executeQuery("$dbname.$collection", $read);
+
+                $collection = 'Products';
+                foreach ($customer_info as $customer) {
+                    foreach ($customer->cart_contents as $book_id) {
+                        $filter = ['book_id' => $book_id];
+                        $option = [];
+                        $read = new MongoDB\Driver\Query($filter, $option);
+                        $book_info = $conn->executeQuery("$dbname.$collection", $read);
+                        foreach ($book_info as $book) {
+                            //echo $book->title . "<br />";
+                            echo nl2br('<tr><td>' . $book->title . '</td><td>' . $book->author . '</td><td>' . '$' . $book->price . '</td></tr>');
+                        }
+                    }
+                }
+
+                ?>
+            </table>
         </div>
 
         <div class="body-container">
