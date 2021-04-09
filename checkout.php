@@ -21,6 +21,155 @@
                 document.getElementById('bill-phone').disabled = cb.checked;
                 document.getElementById('bill-phone').value = "";
             }
+
+            function placeOrder(btn) {
+                if (!document.getElementById('auth-box').checked) {
+                    alert("You need to agree to the charges to be made to your card!");
+                    return;
+                }
+                
+                if (validateInputs()) {
+                    alert("Your order was successfully placed! Thank you for shopping with us :)");
+                    console.log("The order was placed");
+                    //TODO: Update inventory numbers
+
+                    
+
+                    //TODO: Return to home page
+                }
+            }
+
+            function validateInputs() {
+
+                // Validate shipping info
+                if (document.getElementById('ship-first').value == "") {
+                    alert("Please enter your first name and try again.");
+                    return false;
+                }
+
+                if (document.getElementById('ship-last').value == "") {
+                    alert("Please enter your last name and try again.");
+                    return false;
+                }
+
+                if (document.getElementById('ship-address').value == "") {
+                    alert("Please enter your address and try again.");
+                    return false;
+                }
+
+                if (document.getElementById('ship-city').value == "") {
+                    alert("Please enter your city/town and try again.");
+                    return false;
+                }
+
+                if (document.getElementById('ship-province').value == "") {
+                    alert("Please enter your province/territory and try again.");
+                    return false;
+                }
+
+                if (document.getElementById('ship-postal').value == "") {
+                    alert("Please enter your postal code and try again.");
+                    return false;
+                }
+                
+                if (!document.getElementById('ship-postal').value.match(/^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/)) {
+                    alert("Your postal code is invalid. Please try again.");
+                    return false;
+                }
+
+                if (document.getElementById('ship-phone').value == "") {
+                    alert("Please enter your phone number and try again.");
+                    return false;
+                }
+                
+                if (!document.getElementById('ship-phone').value.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)) {
+                    alert("Your phone number is invalid. Please try again.");
+                    return false;
+                }
+
+                // Validate payment details
+                if (document.getElementById('credit-num').value == "") {
+                    alert("Please enter your credit/debit card number.");
+                    return false;
+                }
+
+                if (!document.getElementById('credit-num').value.match(/\b\d{4}[ -]?\d{4}[ -]?\d{4}[ -]?\d{4}\b/)) {
+                    alert("Your credit card number is invalid. Please try again.");
+                    return false;
+                }
+
+                if (document.getElementById('expiry-date').value == "") {
+                    alert("Please enter your credit/debit expiry date.");
+                    return false;
+                }
+
+                if (!document.getElementById('expiry-date').value.match(/^(0[1-9]|1[0-2])\/\d{2}$/)) {
+                    alert("Your credit card expiry date is invalid. Please try again.");
+                    return false;
+                }
+
+                if (document.getElementById('cvv-num').value == "") {
+                    alert("Please enter your credit/debit CVV number.");
+                    return false;
+                }
+
+                if (!document.getElementById('cvv-num').value.match(/^\d{3}$/)) {
+                    alert("Your credit card CVV number is invalid. Please try again.");
+                    return false;
+                }
+
+                // Validate billing info
+                if (document.getElementById('billing-box').checked) {
+                    return true;
+                }
+
+                if (document.getElementById('bill-first').value == "") {
+                    alert("Please enter your first name and try again.");
+                    return false;
+                }
+
+                if (document.getElementById('bill-last').value == "") {
+                    alert("Please enter your last name and try again.");
+                    return false;
+                }
+
+                if (document.getElementById('bill-address').value == "") {
+                    alert("Please enter your address and try again.");
+                    return false;
+                }
+
+                if (document.getElementById('bill-city').value == "") {
+                    alert("Please enter your city/town and try again.");
+                    return false;
+                }
+
+                if (document.getElementById('bill-province').value == "") {
+                    alert("Please enter your province/territory and try again.");
+                    return false;
+                }
+
+                if (document.getElementById('bill-postal').value == "") {
+                    alert("Please enter your postal code and try again.");
+                    return false;
+                }
+                
+                if (!document.getElementById('bill-postal').value.match(/^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/)) {
+                    alert("Your postal code is invalid. Please try again.");
+                    return false;
+                }
+
+                if (document.getElementById('bill-phone').value == "") {
+                    alert("Please enter your phone number and try again.");
+                    return false;
+                }
+                
+                if (!document.getElementById('bill-phone').value.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)) {
+                    alert("Your phone number is invalid. Please try again.");
+                    return false;
+                }
+                
+                return true;
+            }
         </script>
     </head>
 
@@ -48,6 +197,12 @@
                 //TEMP - WILL RETRIEVE LATER
                 $customer_id = 4;
 
+                // Checkout values
+                $subtotal = 0;
+                $tax_amount = 0;
+                $TAX_RATE = 0.13;
+                $total = 0;
+
                 $dbm = new MDBManager();
                 $conn = $dbm->getConnection();
 
@@ -65,13 +220,21 @@
                         $read = new MongoDB\Driver\Query($filter, $option);
                         $book_info = $conn->executeQuery("$dbname.$collection", $read);
                         foreach ($book_info as $book) {
-                            //echo $book->title . "<br />";
                             echo nl2br('<tr><td>' . $book->title . '</td><td>' . $book->author . '</td><td>' . '$' . $book->price . '</td></tr>');
+                            $subtotal += $book->price;
                         }
                     }
                 }
 
+                $tax_amount = round($subtotal * $TAX_RATE, 2);
+                $total = round($subtotal + $tax_amount, 2);
+
+                echo nl2br('<tr></tr><tr></tr>');
+                echo nl2br('<tr><td></td><td style="font-weight:bold">' . 'Subtotal' . '</td><td>' . '$' . $subtotal . '</td></tr>');
+                echo nl2br('<tr><td></td><td style="font-weight:bold">' . 'Tax (13%)' . '</td><td>' . '$' . $tax_amount . '</td></tr>');
+                echo nl2br('<tr><td></td><td style="font-weight:bold">' . 'Total' . '</td><td>' . '$' . $total . '</td></tr>');
                 ?>
+
             </table>
         </div>
 
@@ -105,8 +268,26 @@
                             <td><input size="30" id="ship-postal"> </td>
                         </tr>
                         <tr>
-                            <td>Phone Number (optional): </td>
+                            <td>Phone Number (555-555-5555): </td>
                             <td><input size="30" id="ship-phone"> </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2 style="text-align:center">Payment Details:</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Credit/Debit Card Number: </td>
+                            <td><input size="30" id="credit-num"> </td>
+                        </tr>
+                        <tr>
+                            <td>Expiry Date (MM/YY): </td>
+                            <td><input size="30" id="expiry-date"> </td>
+                        </tr>
+                        <tr>
+                            <td>CVV (eg. 555): </td>
+                            <td><input size="30" id="cvv-num"> </td>
                         </tr>
                     </tbody>
                 </table>
@@ -147,12 +328,34 @@
                             <td><input size="30" id="bill-postal"> </td>
                         </tr>
                         <tr>
-                            <td>Phone Number (optional): </td>
+                            <td>Phone Number (555-555-5555): </td>
                             <td><input size="30" id="bill-phone"> </td>
                         </tr>
                     </tbody>
                 </table>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="auth-box">
+                                <label for="auth-box">I authorize StudentSaver&#8482; to charge my card to the total amount above</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="button" onclick="placeOrder(this);">Place Order</button>
+                            </td>
+                        </tr>
+                        <tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
+        <hr />
+        <footer>
+            <p>COPYRIGHT &#169; 2021 StudentSaver</p>
+            <p>All rights reserved.</p>
+        </footer>
     </body>
 </html>
