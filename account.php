@@ -16,10 +16,12 @@ $exists = $dbQuery->customerExists($email);
 if ($exists) {
     echo 'exists';
 } else {
-    if ($dbQuery->createAccount($name, $email, $pass)) {
-        echo 'success';
-    } else {
+    $customer_id = $dbQuery->createAccount($name, $email, $pass);
+    if ($customer_id == -1) {
         echo 'fail';
+    } else {
+        
+        echo 'success';
     }
 }
 

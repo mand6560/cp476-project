@@ -181,10 +181,15 @@ class DbQuery {
 
         $bulk = new MongoDB\Driver\BulkWrite();
 
-        $doc = ['_id' => new MongoDB\BSON\ObjectId, 'name' => $name, 'email' => $email, 'pass_hash' => $pass, 'cart_contents' => []];
+        $doc = ['_id' => new MongoDB\BSON\ObjectId, 'customer_id' => $customer_id, 'name' => $name, 'email' => $email, 'pass_hash' => $pass, 'cart_contents' => []];
         $bulk->insert($doc);
         $result = $conn->executeBulkWrite(self::DB_NAME . "." . self::CUSTOMERS_COLLECTION, $bulk);
-        return !empty($result);
+        
+        if (!empty($result)) {
+            return $customer_id;
+        } else {
+            return -1;
+        }
     }
 }
 
