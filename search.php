@@ -13,9 +13,6 @@
     </style>
     
     <script>
-        function search() {
-            document.getElementById('search').value;
-        }
         
     </script>
 
@@ -49,21 +46,31 @@
         include_once 'dbQuery.php';        
 
         $resultsFound = FALSE;
-        
-        $name = $_POST['search_box'];
-        if (!empty($name)) {
+
+        //TEMP
+        $customer_id = 4;
+
+        //if search bar is not empty
+        if (!empty($_POST['search_box'])) {
+            //take text from search bar and query
+            $name = $_POST['search_box'];
+
             $textbooks = (New DbQuery())->getResults($name);
-        
+            //display matching textbooks
             foreach ($textbooks as $textbook) {
                 echo nl2br('<tr style="text-align:center;"><td>' .  $textbook->title . '</td><td>' . $textbook->author . '</td><td>' . $textbook->isbn . '</td><td>' . "$" . $textbook->price . '</td><td>' . $textbook->stock.'</td><td>' . $textbook->subject.'</td><td style="text-align:left;">' . $textbook->description."</td>");
                 $resultsFound = TRUE;
+                //check if textbook is in stock and display button or sold out 
                 if($textbook->stock > 0){
-                    echo '<td><input type="submit" value="Add to cart"/></td></tr>';
+                    //onclick="addToCart($customer_id, $textbook->book_id)
+                    echo '<td><input type="submit" value="Add to cart" name="cart" onclick="addToCart($customer_id, $textbook->book_id)"/></td></tr>';
                 } else {
                     echo '<td>Sold out!</td></tr>';
                 }
             }
+            
         }
+        //printing if results are found or not 
         if ($resultsFound) {
             print("Results found for '$name':");
         } else {

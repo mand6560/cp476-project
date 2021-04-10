@@ -47,6 +47,33 @@ class DbQuery {
         return $result;
     }
 
+    // Get the contents of the customer's cart
+    function getCustomerCartItems($customer_id) {
+        $conn = $this->makeConnection();
+        $filter = ['customer_id' => $customer_id];
+        $option = [];
+        $query = new MongoDB\Driver\Query($filter, $option);
+        $customer_info = $conn->executeQuery(self::DB_NAME . "." . self::CUSTOMERS_COLLECTION, $query);
+
+        $collection = 'Products';
+        foreach ($customer_info as $customer) {
+            $items = [];
+            foreach ($customer->cart_contents as $book_id) {
+                $filter = ['book_id' => $book_id];
+                $option = [];
+                $query = new MongoDB\Driver\Query($filter, $option);
+                $book_info = $conn->executeQuery(self::DB_NAME . "." . self::PRODUCTS_COLLECTION, $query);
+
+                foreach ($book_info as $book) {
+                    //$item = [$book->title, $book->author, $book->price];
+                    $item = ["title" => $book->title, "author" => $book->author, "price" => $book->price];
+                    array_push($items, $item);
+                }
+            }
+            return $items;
+        }
+    }
+
     function addToCart($customer_id, int $book_id) {
         $conn = $this->makeConnection();
 

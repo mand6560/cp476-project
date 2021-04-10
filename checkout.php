@@ -189,10 +189,7 @@
                 </tr>
 
                 <?php
-                include_once 'MDBManager.php';
-
-                $dbname = 'studentsaver';
-                $collection = 'Customer';
+                include_once 'dbQuery.php';
 
                 //TEMP - WILL RETRIEVE LATER
                 $customer_id = 4;
@@ -203,27 +200,28 @@
                 $TAX_RATE = 0.13;
                 $total = 0;
 
-                $dbm = new MDBManager();
-                $conn = $dbm->getConnection();
-
                 // get all
-                $filter = ['customer_id' => $customer_id];
-                $option = [];
-                $read = new MongoDB\Driver\Query($filter, $option);
-                $customer_info = $conn->executeQuery("$dbname.$collection", $read);
+                // $filter = ['customer_id' => $customer_id];
+                // $option = [];
+                // $read = new MongoDB\Driver\Query($filter, $option);
+                // $customer_info = $conn->executeQuery("$dbname.$collection", $read);
 
-                $collection = 'Products';
-                foreach ($customer_info as $customer) {
-                    foreach ($customer->cart_contents as $book_id) {
-                        $filter = ['book_id' => $book_id];
-                        $option = [];
-                        $read = new MongoDB\Driver\Query($filter, $option);
-                        $book_info = $conn->executeQuery("$dbname.$collection", $read);
-                        foreach ($book_info as $book) {
-                            echo nl2br('<tr><td>' . $book->title . '</td><td>' . $book->author . '</td><td>' . '$' . $book->price . '</td></tr>');
-                            $subtotal += $book->price;
-                        }
-                    }
+                // $collection = 'Products';
+                // foreach ($customer_info as $customer) {
+                //     foreach ($customer->cart_contents as $book_id) {
+                //         $filter = ['book_id' => $book_id];
+                //         $option = [];
+                //         $read = new MongoDB\Driver\Query($filter, $option);
+                //         $book_info = $conn->executeQuery("$dbname.$collection", $read);
+                        
+                //     }
+                // }
+
+                $cart_contents = (New DbQuery())->getCustomerCartItems($customer_id);
+                
+                foreach ($cart_contents as $book) {
+                    echo nl2br('<tr><td>' . $book["title"] . '</td><td>' . $book["author"] . '</td><td>' . '$' . $book["price"] . '</td></tr>');
+                    $subtotal += $book["price"];
                 }
 
                 $tax_amount = round($subtotal * $TAX_RATE, 2);
