@@ -23,7 +23,7 @@
     <h1>Search Results</h1>
     <form action="search.php" method="post">
         <div class="search">
-            <input type = "Text" placeholder = "Search for title" value = "" name="search_box"/>
+            <input type = "Text" placeholder = "Search for textbooks" value = "" name="search_box"/>
             <input type="submit" value="Search"/>
         </div>
     </form>
@@ -59,8 +59,8 @@
         $foo = FALSE;
         
         foreach ($all as $textbook) {
-            //  TODO: add or cases for stuff other than title
-            if(str_contains(strtolower($textbook->title), strtolower($name)) ){
+            
+            if(str_contains(strtolower($textbook->book_id), strtolower($name)) || str_contains(strtolower($textbook->title), strtolower($name)) ||str_contains(strtolower($textbook->author), strtolower($name)) ||str_contains(strtolower($textbook->isbn), strtolower($name)) ||str_contains(strtolower($textbook->price), strtolower($name)) ||str_contains(strtolower($textbook->stock), strtolower($name)) ||str_contains(strtolower($textbook->subject), strtolower($name)) ||str_contains(strtolower($textbook->description), strtolower($name))){
                 echo nl2br('<tr><td>' . $textbook->book_id . '</td><td>' . $textbook->title . '</td><td>' . $textbook->author . '</td><td>' . $textbook->isbn . '</td><td>' . $textbook->price . '</td><td>' . $textbook->stock.'</td><td>' . $textbook->subject.'</td><td>' . $textbook->description."</td></tr>");
                 $foo = TRUE;
             } 
