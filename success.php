@@ -18,8 +18,11 @@
             include_once 'dbQuery.php';
             $result = $_POST["success"];
 
-            //TEMP - WILL RETRIEVE LATER
-            $customer_id = 4;
+            if(!isset($_COOKIE["customer_id"])) {
+                return;
+            } else {
+                $customer_id = intval($_COOKIE["customer_id"]);
+            }
 
             if ($result = "true") {
                 // Update stock levels
