@@ -27,7 +27,7 @@
     <form action="search.php" method="post">
         <div class="search">
             <input type = "Text" placeholder = "Search for textbooks" value = "" name="search_box"/>
-            <input type="submit" value="Search"/>
+            <input class="button buttonSearch" type="submit" value="Search"/>
         </div>
     </form>
     <table style="width: 100%">
