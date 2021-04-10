@@ -52,8 +52,13 @@
             $textbooks = (New DbQuery())->getResults($name);
         
             foreach ($textbooks as $textbook) {
-                echo nl2br('<tr style="text-align:center;"><td>' .  $textbook->title . '</td><td>' . $textbook->author . '</td><td>' . $textbook->isbn . '</td><td>' . "$" . $textbook->price . '</td><td>' . $textbook->stock.'</td><td>' . $textbook->subject.'</td><td style="text-align:left;">' . $textbook->description."</td></tr>");
+                echo nl2br('<tr style="text-align:center;"><td>' .  $textbook->title . '</td><td>' . $textbook->author . '</td><td>' . $textbook->isbn . '</td><td>' . "$" . $textbook->price . '</td><td>' . $textbook->stock.'</td><td>' . $textbook->subject.'</td><td style="text-align:left;">' . $textbook->description."</td>");
                 $resultsFound = TRUE;
+                if($textbook->stock > 0){
+                    echo '<td><input type="submit" value="Add to cart"/></td></tr>';
+                } else {
+                    echo '</tr>';
+                }
             }
         }
         if ($resultsFound) {
