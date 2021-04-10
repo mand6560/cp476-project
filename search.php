@@ -48,7 +48,6 @@
         $dbm = new MDBManager();
         $conn = $dbm->getConnection();
 
-        $name = $_POST['search_box'];
         
         //"title" => $name
         
@@ -58,12 +57,16 @@
         $all = $conn->executeQuery("$dbname.$collection", $read);
         $foo = FALSE;
         
-        foreach ($all as $textbook) {
-            
-            if(str_contains(strtolower($textbook->book_id), strtolower($name)) || str_contains(strtolower($textbook->title), strtolower($name)) ||str_contains(strtolower($textbook->author), strtolower($name)) ||str_contains(strtolower($textbook->isbn), strtolower($name)) ||str_contains(strtolower($textbook->price), strtolower($name)) ||str_contains(strtolower($textbook->stock), strtolower($name)) ||str_contains(strtolower($textbook->subject), strtolower($name)) ||str_contains(strtolower($textbook->description), strtolower($name))){
-                echo nl2br('<tr><td>' . $textbook->book_id . '</td><td>' . $textbook->title . '</td><td>' . $textbook->author . '</td><td>' . $textbook->isbn . '</td><td>' . $textbook->price . '</td><td>' . $textbook->stock.'</td><td>' . $textbook->subject.'</td><td>' . $textbook->description."</td></tr>");
-                $foo = TRUE;
-            } 
+        if(!empty($_POST['search_box'])){
+            $name = $_POST['search_box'];
+        
+            foreach ($all as $textbook) {
+                
+                if(str_contains(strtolower($textbook->book_id), strtolower($name)) || str_contains(strtolower($textbook->title), strtolower($name)) ||str_contains(strtolower($textbook->author), strtolower($name)) ||str_contains(strtolower($textbook->isbn), strtolower($name)) ||str_contains(strtolower($textbook->price), strtolower($name)) ||str_contains(strtolower($textbook->stock), strtolower($name)) ||str_contains(strtolower($textbook->subject), strtolower($name)) ||str_contains(strtolower($textbook->description), strtolower($name))){
+                    echo nl2br('<tr><td>' . $textbook->book_id . '</td><td>' . $textbook->title . '</td><td>' . $textbook->author . '</td><td>' . $textbook->isbn . '</td><td>' . $textbook->price . '</td><td>' . $textbook->stock.'</td><td>' . $textbook->subject.'</td><td>' . $textbook->description."</td></tr>");
+                    $foo = TRUE;
+                } 
+            }
         }
         if($foo == TRUE){
             print("Results Found:");
