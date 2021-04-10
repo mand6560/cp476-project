@@ -170,6 +170,7 @@
                 return true;
             }
         </script>
+
     </head>
 
     <body>
@@ -190,8 +191,13 @@
                 <?php
                 include_once 'dbQuery.php';
 
-                //TEMP - WILL RETRIEVE LATER
-                $customer_id = 4;
+                $cookie_name = "customer_id";
+
+                if(!isset($_COOKIE[$cookie_name])) {
+                    return;
+                } else {
+                    $customer_id = intval($_COOKIE[$cookie_name]);
+                }
 
                 // Checkout values
                 $subtotal = 0;
@@ -200,7 +206,7 @@
                 $total = 0;
 
                 $cart_contents = (New DbQuery())->getCustomerCartItems($customer_id);
-                
+
                 foreach ($cart_contents as $book) {
                     echo nl2br('<tr><td>' . $book["title"] . '</td><td>' . $book["author"] . '</td><td>' . '$' . $book["price"] . '</td></tr>');
                     $subtotal += $book["price"];
