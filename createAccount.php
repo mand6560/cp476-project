@@ -21,7 +21,7 @@ if ($exists) {
         echo 'fail';
     } else {
         $cookie_name = "customer_id";
-        $cookie_value = 4;
+        $cookie_value = $customer_id;
         setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
         echo 'success';
     }
