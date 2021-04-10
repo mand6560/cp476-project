@@ -41,7 +41,7 @@
 
         <?php
         include_once 'MDBManager.php';
-
+        
         $dbname = 'studentsaver';
         $collection = 'Products';
 
@@ -50,20 +50,26 @@
 
         $name = $_POST['search_box'];
         
-
-        // get all
-        $filter = ['title' => $name];
+        //"title" => $name
+        
+        $filter = [];
         $option = [];
         $read = new MongoDB\Driver\Query($filter, $option);
         $all = $conn->executeQuery("$dbname.$collection", $read);
-
-        
-
+        $foo = FALSE;
         
         foreach ($all as $textbook) {
-            echo nl2br('<tr><td>' . $textbook->book_id . '</td><td>' . $textbook->title . '</td><td>' . $textbook->author . '</td><td>' . $textbook->isbn . '</td><td>' . $textbook->price . '</td><td>' . $textbook->stock.'</td><td>' . $textbook->subject.'</td><td>' . $textbook->description."</td></tr>");
+            //  TODO: add or cases for stuff other than title
+            if(str_contains(strtolower($textbook->title), strtolower($name)) ){
+                echo nl2br('<tr><td>' . $textbook->book_id . '</td><td>' . $textbook->title . '</td><td>' . $textbook->author . '</td><td>' . $textbook->isbn . '</td><td>' . $textbook->price . '</td><td>' . $textbook->stock.'</td><td>' . $textbook->subject.'</td><td>' . $textbook->description."</td></tr>");
+                $foo = TRUE;
+            } 
         }
-        
+        if($foo == TRUE){
+            print("Results Found:");
+        } else {
+            print("No Results Found");
+        }
         ?>
 
     </table>
