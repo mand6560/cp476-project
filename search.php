@@ -57,7 +57,7 @@
                 if($textbook->stock > 0){
                     echo '<td><input type="submit" value="Add to cart"/></td></tr>';
                 } else {
-                    echo '</tr>';
+                    echo '<td>Sold out!</td></tr>';
                 }
             }
         }
