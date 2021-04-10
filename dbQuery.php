@@ -142,6 +142,50 @@ class DbQuery {
         $bulk->update($filter, ['$set' => ['cart_contents' => []]]);
         $result = $conn->executeBulkWrite(self::DB_NAME . "." . self::CUSTOMERS_COLLECTION, $bulk);
     }
+    
+    // True if customer email is already in mongodb, false otherwise
+    function customerExists($email) {
+        $conn = $this->makeConnection();
+
+        $filter = ['email' => $email];
+        $query = new MongoDB\Driver\Query($filter);
+        $cursor = $conn->executeQuery(self::DB_NAME . "." . self::CUSTOMERS_COLLECTION, $query);
+
+        $cursor->rewind();
+        $customer = $cursor->current();
+        if (!empty($customer)) {
+            return True;
+        } else {
+            return False;
+        }
+    }
+
+    function createAccount($name, $email, $pass) {
+        $conn = $this->makeConnection();
+
+        $options = [
+            'projection' => [
+                'customer_id' => 1
+            ],
+            'limit' => 1,
+            'sort' => [
+                'customer_id' => -1
+            ],
+            ];
+        $query = new MongoDB\Driver\Query([], $options);
+        $cursor = $conn->executeQuery(self::DB_NAME . "." . self::CUSTOMERS_COLLECTION, $query);
+        
+        $cursor->rewind();
+        // Set new customer_id to current highest + 1
+        $customer_id = $cursor->current()->customer_id + 1;
+
+        $bulk = new MongoDB\Driver\BulkWrite();
+
+        $doc = ['_id' => new MongoDB\BSON\ObjectId, 'name' => $name, 'email' => $email, 'pass_hash' => $pass, 'cart_contents' => []];
+        $bulk->insert($doc);
+        $result = $conn->executeBulkWrite(self::DB_NAME . "." . self::CUSTOMERS_COLLECTION, $bulk);
+        return !empty($result);
+    }
 }
 
 ?>
