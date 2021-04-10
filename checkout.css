@@ -47,8 +47,12 @@ table {
 }
 
 .button:hover {
-	background-color: #0742af; /* Green */
+	background-color: #0742af;
 	border-style: solid;
 	border-color: black;
 	color: white;
+}
+
+.buttonSearch {
+	padding: 0px 30px;
 }
