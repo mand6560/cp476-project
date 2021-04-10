@@ -62,7 +62,7 @@
         
             foreach ($all as $textbook) {
                 
-                if(str_contains(strtolower($textbook->book_id), strtolower($name)) || str_contains(strtolower($textbook->title), strtolower($name)) ||str_contains(strtolower($textbook->author), strtolower($name)) ||str_contains(strtolower($textbook->isbn), strtolower($name)) ||str_contains(strtolower($textbook->price), strtolower($name)) ||str_contains(strtolower($textbook->stock), strtolower($name)) ||str_contains(strtolower($textbook->subject), strtolower($name)) ||str_contains(strtolower($textbook->description), strtolower($name))){
+                if(strpos(strtolower($textbook->book_id), strtolower($name)) !== False || strpos(strtolower($textbook->title), strtolower($name)) !== False || strpos(strtolower($textbook->author), strtolower($name)) !== False || strpos(strtolower($textbook->isbn), strtolower($name)) !== False || strpos(strtolower($textbook->price), strtolower($name)) !== False || strpos(strtolower($textbook->stock), strtolower($name)) !== False || strpos(strtolower($textbook->subject), strtolower($name)) !== False || strpos(strtolower($textbook->description), strtolower($name)) !== False){
                     echo nl2br('<tr><td>' . $textbook->book_id . '</td><td>' . $textbook->title . '</td><td>' . $textbook->author . '</td><td>' . $textbook->isbn . '</td><td>' . $textbook->price . '</td><td>' . $textbook->stock.'</td><td>' . $textbook->subject.'</td><td>' . $textbook->description."</td></tr>");
                     $foo = TRUE;
                 } 
