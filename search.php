@@ -8,7 +8,7 @@
         table,
         th,
         td {
-            border: 1px solid black;
+            border: 1px solid white;
         }
     </style>
     
