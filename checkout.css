@@ -1,35 +1,30 @@
 body {
-    background-color: lightblue;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: large;
-    width: 100%;
+	background-color: lightblue;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: large;
 }
 
 hr {
-    border: 1px solid white;
+	border: 1px solid white;
 }
 
 .header {
-    text-align: center;
-    font-size: larger;
+	text-align: center;
+	font-size: larger;
 }
 
 table {
-    border-collapse: separate;
-    border-spacing: 0 15px;
-    margin: 0 auto;
-}
-
-.body-container {
-    width: 100%;
+	border-collapse: separate;
+	border-spacing: 0 15px;
+	margin: 0 auto;
 }
 
 .shipping {
-    width: 50%;
-    float: left;
+	width: 50%;
+	float: left;
 }
 
 .billing {
-    width: 50%;
-    float: left;
+	width: 50%;
+	float: left;
 }
