@@ -16,7 +16,7 @@
 
             let xhttp = new XMLHttpRequest();
 
-            xhttp.open("POST", "account.php", true);
+            xhttp.open("POST", "createAccount.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send(`first_name=${first_name}&last_name=${last_name}&email=${email}&pass=${pass}`);
 
