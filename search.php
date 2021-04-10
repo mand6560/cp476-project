@@ -50,10 +50,12 @@
         //TEMP
         $customer_id = 4;
 
+        $name = $_POST['search_box'];
+
         //if search bar is not empty
-        if (!empty($_POST['search_box'])) {
+        if (!empty($name)) {
             //take text from search bar and query
-            $name = $_POST['search_box'];
+            
 
             $textbooks = (New DbQuery())->getResults($name);
             //display matching textbooks
