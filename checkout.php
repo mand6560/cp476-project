@@ -206,6 +206,8 @@
                 $total = 0;
 
                 $cart_contents = (New DbQuery())->getCustomerCartItems($customer_id);
+                
+                if (count($cart_contents) == 0) { return; }
 
                 foreach ($cart_contents as $book) {
                     echo nl2br('<tr><td>' . $book["title"] . '</td><td>' . $book["author"] . '</td><td>' . '$' . $book["price"] . '</td></tr>');
