@@ -14,14 +14,14 @@
     </style>
     
     <script type="text/javascript">
-        function click(){
-           let book = document.getElementById('book').value;
+        function click(book_id){
+        //    let book = document.getElementById('book').value;
            
            let xhttp = new XMLHttpRequest();
 
            xhttp.open("POST", "addcart.php", true);
            xhttp.setRequestHandler("Content-type", "application/x-www-form-urlencoded");
-           xhttp.send('book=${book}');
+           xhttp.send(`book=${book_id}`);
 
            xhttp.onreadystatechange = function () {
                 if (xhttp.readyState == 4) {
@@ -91,7 +91,7 @@
                 if($textbook->stock > 0){
                     //onclick="addToCart($customer_id, $textbook->book_id)
                     
-                    echo '<td><input type="submit" value="Add to cart" onclick="click();" class="button" name="cart"/></td></tr>';
+                    echo '<td><input type="submit" value="Add to cart" onclick="click(' . $textbook->book_id .');" class="button" name="cart"/></td></tr>';
                     
                 } else {
                     echo '<td>Sold out!</td></tr>';
