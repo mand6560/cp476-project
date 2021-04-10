@@ -22,6 +22,10 @@
 </head>
 
 <body>
+    <div class="header">
+            <h1>StudentSaver</h1>
+            <hr />
+        </div>
     <h1>Search Results</h1>
     <form action="search.php" method="post">
         <div class="search">
@@ -69,7 +73,11 @@
         ?>
 
     </table>
-
+    <hr />
+    <footer>
+        <p>COPYRIGHT &#169; 2021 StudentSaver</p>
+        <p>All rights reserved.</p>
+    </footer>
 </body>
 
 </html>
