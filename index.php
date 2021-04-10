@@ -4,6 +4,46 @@
         <title>StudentSaver</title>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
         <link rel="stylesheet" href="checkout.css">
+
+        <script type="text/javascript">
+        function signup() {
+            let first_name = document.getElementById('signup-first').value;
+            let last_name = document.getElementById('signup-last').value;
+            let email = document.getElementById('signup-email').value;
+            let pass = document.getElementById('signup-pass').value;
+
+            let full_name = first_name.concat(' ', last_name);
+
+            let xhttp = new XMLHttpRequest();
+
+            xhttp.open("POST", "account.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send(`first_name=${first_name}&last_name=${last_name}&email=${email}&pass=${pass}`);
+
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4) {
+                    if (xhttp.status == 200) {
+                        if (xhttp.responseText == 'exists') {
+                            alert('Cannot create a new account: Email already in use.');
+                        } else if (xhttp.responseText == 'success') {
+                            alert('Account successfully created!');
+                        } else if (xhttp.responseText == 'fail') {
+                            alert('An unknown error occurred. Please try again later.');
+                        } else {
+                            displayCustomerInfo(xhttp.responseText);
+                        }
+                    } else {
+                        displayCustomerInfo("An error occurred: " + xhttp.statusText); 
+                    }
+                }
+            };
+        }
+
+        function displayCustomerInfo(sText) {
+            var divCustomerInfo = document.getElementById("customerInfo");
+            divCustomerInfo.innerHTML = sText;
+        }
+    </script>
     </head>
 
     <body>
@@ -43,7 +83,7 @@
                         </tr>
                         <tr>
                             <td>Password: </td>
-                            <td><input size="30" id="signin-pass"> </td>
+                            <td><input type="password" size="30" id="signin-pass"> </td>
                         </tr>
                     </tbody>
                 </table>
@@ -68,7 +108,7 @@
                         </tr>
                         <tr>
                             <td>Password: </td>
-                            <td><input size="30" id="signup-pass"> </td>
+                            <td><input type="password" size="30" id="signup-pass"> </td>
                         </tr>
                     </tbody>
                     
@@ -81,8 +121,10 @@
             </div>
             
             <div class="signup">
-                <button class="button buttonCenter" type="button" onclick="alert('Create account');">Create Account</button>
+                <button class="button buttonCenter" type="button" onclick="signup();">Create Account</button>
             </div>
+
+            <div id="customerInfo"></div>
         <hr />
         <footer>
             <p>COPYRIGHT &#169; 2021 StudentSaver</p>
