@@ -14,7 +14,6 @@
 
         <form action="search.php" method="post">
         <div class="search">
-            <!-- <input type = "Text" placeholder = "Search for textbooks" value = "" name="search_box"/> -->
             <input class="button" type="submit" name="search_box" value="Math"/>
             <input class="button" type="submit" name="search_box" value="Science"/>
             <input class="button" type="submit" name="search_box" value="English"/>
