@@ -25,17 +25,16 @@
             function placeOrder(btn) {
                 if (!document.getElementById('auth-box').checked) {
                     alert("You need to agree to the charges to be made to your card!");
-                    return;
+                    return false;
                 }
                 
                 if (validateInputs()) {
                     alert("Your order was successfully placed! Thank you for shopping with us :)");
                     console.log("The order was placed");
-                    //TODO: Update inventory numbers
 
-                    
-
-                    //TODO: Return to home page
+                    return true;
+                } else {
+                    return false;
                 }
             }
 
@@ -200,23 +199,6 @@
                 $TAX_RATE = 0.13;
                 $total = 0;
 
-                // get all
-                // $filter = ['customer_id' => $customer_id];
-                // $option = [];
-                // $read = new MongoDB\Driver\Query($filter, $option);
-                // $customer_info = $conn->executeQuery("$dbname.$collection", $read);
-
-                // $collection = 'Products';
-                // foreach ($customer_info as $customer) {
-                //     foreach ($customer->cart_contents as $book_id) {
-                //         $filter = ['book_id' => $book_id];
-                //         $option = [];
-                //         $read = new MongoDB\Driver\Query($filter, $option);
-                //         $book_info = $conn->executeQuery("$dbname.$collection", $read);
-                        
-                //     }
-                // }
-
                 $cart_contents = (New DbQuery())->getCustomerCartItems($customer_id);
                 
                 foreach ($cart_contents as $book) {
@@ -342,7 +324,10 @@
                         </tr>
                         <tr>
                             <td>
-                                <button type="button" onclick="placeOrder(this);">Place Order</button>
+                                <form action="success.php" method="post" onSubmit="javascript:return placeOrder(this);">
+                                    <input class="button" type="submit" name="submit" value="Place Order">
+                                    <input hidden name="success" type="text" id="success" value="true">
+                                </form>
                             </td>
                         </tr>
                         <tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>

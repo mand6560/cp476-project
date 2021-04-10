@@ -93,6 +93,55 @@ class DbQuery {
         $bulk->update($filter, ['$set' => ['cart_contents' => $cart_contents]]);
         $result = $conn->executeBulkWrite(self::DB_NAME . "." . self::CUSTOMERS_COLLECTION, $bulk);
     }
+
+    function clearCart($customer_id) {
+        $conn = $this->makeConnection();
+
+        // load user cart array
+        $filter = ['customer_id' => $customer_id];
+        $query = new MongoDB\Driver\Query($filter);
+        $cursor = $conn->executeQuery(self::DB_NAME . "." . self::CUSTOMERS_COLLECTION, $query);
+        $cursor->rewind();
+        $cart_obj = $cursor->current();
+        $cart_contents = $cart_obj->cart_contents;
+
+        // replace user cart array with an empty one
+        $bulk = new MongoDB\Driver\BulkWrite();
+        $bulk->update($filter, ['$set' => ['cart_contents' => []]]);
+        $result = $conn->executeBulkWrite(self::DB_NAME . "." . self::CUSTOMERS_COLLECTION, $bulk);
+    }
+
+    function updateStock($customer_id) {
+        $conn = $this->makeConnection();
+
+        // load user cart array
+        $filter = ['customer_id' => $customer_id];
+        $query = new MongoDB\Driver\Query($filter);
+        $cursor = $conn->executeQuery(self::DB_NAME . "." . self::CUSTOMERS_COLLECTION, $query);
+        $cursor->rewind();
+        $cart_obj = $cursor->current();
+        $cart_contents = $cart_obj->cart_contents;
+
+        foreach ($cart_contents as $book_id) {
+            $filter = ['book_id' => $book_id];
+            $query = new MongoDB\Driver\Query($filter);
+            $cursor = $conn->executeQuery(self::DB_NAME . "." . self::PRODUCTS_COLLECTION, $query);
+            $cursor->rewind();
+            $book_obj = $cursor->current();
+            $new_stock = $book_obj->stock - 1;
+
+            // decrement the stock of each item in users cart by 1 
+            $bulk = new MongoDB\Driver\BulkWrite();
+            $bulk->update($filter, ['$set' => ['stock' => $new_stock]]);
+            $result = $conn->executeBulkWrite(self::DB_NAME . "." . self::PRODUCTS_COLLECTION, $bulk);
+        }
+        
+
+        // replace user cart array with an empty one
+        $bulk = new MongoDB\Driver\BulkWrite();
+        $bulk->update($filter, ['$set' => ['cart_contents' => []]]);
+        $result = $conn->executeBulkWrite(self::DB_NAME . "." . self::CUSTOMERS_COLLECTION, $bulk);
+    }
 }
 
 ?>
