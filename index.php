@@ -12,7 +12,13 @@
             <hr />
         </div>
 
-        
+        <form action="search.php" method="post">
+        <div class="search">
+            <!-- <input type = "Text" placeholder = "Search for textbooks" value = "" name="search_box"/> -->
+            <input type="submit" name="search_box" value="Math"/>
+        </div>
+    </form>
+
         <hr />
         <footer>
             <p>COPYRIGHT &#169; 2021 StudentSaver</p>
