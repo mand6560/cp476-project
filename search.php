@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -12,8 +13,31 @@
         }
     </style>
     
-    <script>
-        
+    <script type="text/javascript">
+        function click(){
+           let book = document.getElementById('book').value;
+           
+           let xhttp = new XMLHttpRequest();
+
+           xhttp.open("POST", "addcart.php", true);
+           xhttp.setRequestHandler("Content-type", "application/x-www-form-urlencoded");
+           xhttp.send('book=${book}');
+
+           xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4) {
+                    if (xhttp.status == 200) {
+                        if (xhttp.responseText == 'added to cart') {
+                            alert('Added to cart');
+                        } else {
+                            displayCustomerInfo(xhttp.responseText);
+                        }
+                    } else {
+                        displayCustomerInfo("An error occurred: " + xhttp.statusText); 
+                    }
+                }
+            };
+
+        }
     </script>
 
 </head>
@@ -60,12 +84,15 @@
             $textbooks = (New DbQuery())->getResults($name);
             //display matching textbooks
             foreach ($textbooks as $textbook) {
-                echo nl2br('<tr style="text-align:center;"><td>' .  $textbook->title . '</td><td>' . $textbook->author . '</td><td>' . $textbook->isbn . '</td><td>' . "$" . $textbook->price . '</td><td>' . $textbook->stock.'</td><td>' . $textbook->subject.'</td><td style="text-align:left;">' . $textbook->description."</td>");
+                //<form method="post">
+                echo nl2br('<tr style="text-align:center;"><td name="book">' .  $textbook->title . '</td><td>' . $textbook->author . '</td><td>' . $textbook->isbn . '</td><td>' . "$" . $textbook->price . '</td><td>' . $textbook->stock.'</td><td>' . $textbook->subject.'</td><td style="text-align:left;">' . $textbook->description."</td>");
                 $resultsFound = TRUE;
                 //check if textbook is in stock and display button or sold out 
                 if($textbook->stock > 0){
                     //onclick="addToCart($customer_id, $textbook->book_id)
-                    echo '<td><input type="submit" value="Add to cart" name="cart" onclick="addToCart($customer_id, $textbook->book_id)"/></td></tr>';
+                    
+                    echo '<td><input type="submit" value="Add to cart" onclick="click();" class="button" name="cart"/></td></tr>';
+                    
                 } else {
                     echo '<td>Sold out!</td></tr>';
                 }
