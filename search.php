@@ -31,14 +31,14 @@
     </form>
     <table style="width: 100%">
         <tr style="font-weight:bold">
-            <td>title</td>
-            <td>author</td>
-            <td>isbn</td>
-            <td>price</td>
-            <td>stock</td>
-            <td>subject</td>
-            <td>description</td>
-            <td>cart</td>
+            <td style="text-align:center;">title</td>
+            <td style="text-align:center;">author</td>
+            <td style="text-align:center;">isbn</td>
+            <td style="text-align:center;">price</td>
+            <td style="text-align:center;">stock</td>
+            <td style="text-align:center;">subject</td>
+            <td style="text-align:center;">description</td>
+            <td style="text-align:center;">cart</td>
         </tr>
 
         <?php
@@ -52,7 +52,7 @@
             $textbooks = (New DbQuery())->getResults($name);
         
             foreach ($textbooks as $textbook) {
-                echo nl2br('<tr><td>' .  $textbook->title . '</td><td>' . $textbook->author . '</td><td>' . $textbook->isbn . '</td><td>' . "$" . $textbook->price . '</td><td>' . $textbook->stock.'</td><td>' . $textbook->subject.'</td><td>' . $textbook->description."</td></tr>");
+                echo nl2br('<tr style="text-align:center;"><td>' .  $textbook->title . '</td><td>' . $textbook->author . '</td><td>' . $textbook->isbn . '</td><td>' . "$" . $textbook->price . '</td><td>' . $textbook->stock.'</td><td>' . $textbook->subject.'</td><td style="text-align:left;">' . $textbook->description."</td></tr>");
                 $resultsFound = TRUE;
             }
         }
