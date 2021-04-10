@@ -1,44 +1,10 @@
-<!-- class dbQuery {
-
-    private function makeConnection() {
-        $dbname = 'cp476';
-        $collection = 'users';
-
-        $dbm = new MDBManager();
-        $conn = $dbm->getConnection();
-
-        return $conn
-    }
-
-    function getResults(params[title, author, isbn, ...]) {
-        $conn = makeConnection();
-
-        
-
-        foreach field() {
-            list <- mongo.find(field, "foobar")
-        }
-
-        return list
-    }
-
-    function getBook(bookID) {
-        $conn = makeConnection();
-
-        return book details
-    }
-
-    private function lookforthis(this) {
-        return result
-    }
-} -->
 <?php
 include_once 'MDBManager.php';
 
 class DbQuery {
     private const DB_NAME = 'studentsaver';
     private const PRODUCTS_COLLECTION = 'Products';
-    private const CUSTOMER_COLLECTION = 'Customer';
+    private const CUSTOMERS_COLLECTION = 'Customer';
 
     private function makeConnection() {
         $dbm = new MDBManager();
@@ -48,13 +14,13 @@ class DbQuery {
     }
 
     function getResults($search_query) {
-        $conn = $this->makeConnection();
-        $query = new MongoDB\Driver\Query([]);
-        $all = $conn->executeQuery(self::DB_NAME . "." . self::PRODUCTS_COLLECTION, $query);
-
         $textbooks = [];
         
         if (!empty($search_query)) {
+            $conn = $this->makeConnection();
+            $query = new MongoDB\Driver\Query([]);
+            $all = $conn->executeQuery(self::DB_NAME . "." . self::PRODUCTS_COLLECTION, $query);
+
             foreach ($all as $textbook) {
                 if(strpos(strtolower($textbook->book_id), strtolower($search_query)) !== False ||
                  strpos(strtolower($textbook->title), strtolower($search_query)) !== False ||
@@ -72,9 +38,9 @@ class DbQuery {
         return $textbooks;
     }
 
-    function getBookByID($bookID) {
+    function getBookByID($book_id) {
         $conn = $this->makeConnection();
-        $filter = ['book_id' => $bookID];
+        $filter = ['book_id' => $book_id];
         $query = new MongoDB\Driver\Query($filter);
         $result = $conn->executeQuery(self::DB_NAME . "." . self::PRODUCTS_COLLECTION, $query);
 
@@ -87,7 +53,7 @@ class DbQuery {
         $filter = ['customer_id' => $customer_id];
         $option = [];
         $query = new MongoDB\Driver\Query($filter, $option);
-        $customer_info = $conn->executeQuery(self::DB_NAME . "." . self::CUSTOMER_COLLECTION, $query);
+        $customer_info = $conn->executeQuery(self::DB_NAME . "." . self::CUSTOMERS_COLLECTION, $query);
 
         $collection = 'Products';
         foreach ($customer_info as $customer) {
@@ -106,6 +72,26 @@ class DbQuery {
             }
             return $items;
         }
+    }
+
+    function addToCart($customer_id, int $book_id) {
+        $conn = $this->makeConnection();
+
+        // load user cart array
+        $filter = ['customer_id' => $customer_id];
+        $query = new MongoDB\Driver\Query($filter);
+        $cursor = $conn->executeQuery(self::DB_NAME . "." . self::CUSTOMERS_COLLECTION, $query);
+        $cursor->rewind();
+        $cart_obj = $cursor->current();
+        $cart_contents = $cart_obj->cart_contents;
+
+        // append new book to user cart array
+        array_push($cart_contents, $book_id);
+
+        // replace user cart array with newly appended one
+        $bulk = new MongoDB\Driver\BulkWrite();
+        $bulk->update($filter, ['$set' => ['cart_contents' => $cart_contents]]);
+        $result = $conn->executeBulkWrite(self::DB_NAME . "." . self::CUSTOMERS_COLLECTION, $bulk);
     }
 }
 
