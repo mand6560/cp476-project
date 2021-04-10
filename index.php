@@ -19,7 +19,6 @@
             <input class="button" type="submit" name="search_box" value="Science"/>
             <input class="button" type="submit" name="search_box" value="English"/>
             <input class="button" type="submit" name="search_box" value="History"/>
-            <input class="button" type="submit" name="search_box" value="Math"/>
         </div>
     </form>
 
