@@ -50,9 +50,8 @@
 
         $resultsFound = FALSE;
         
-        if (!empty($_POST['search_box'])) {
-            $name = $_POST['search_box'];
-
+        $name = $_POST['search_box'];
+        if (!empty($name)) {
             $textbooks = (New DbQuery())->getResults($name);
         
             foreach ($textbooks as $textbook) {
@@ -66,9 +65,9 @@
             }
         }
         if ($resultsFound) {
-            print("Results Found:");
+            print("Results found for '$name':");
         } else {
-            print("No Results Found");
+            print("No results found for '$name':");
         }
         ?>
 
