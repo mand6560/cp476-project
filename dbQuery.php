@@ -48,8 +48,8 @@ class DbQuery {
 
     function getResults($search_query) {
         $conn = $this->makeConnection();
-        $read = new MongoDB\Driver\Query([]);
-        $all = $conn->executeQuery(self::DB_NAME . "." . self::PRODUCTS_COLLECTION, $read);
+        $query = new MongoDB\Driver\Query([]);
+        $all = $conn->executeQuery(self::DB_NAME . "." . self::PRODUCTS_COLLECTION, $query);
 
         $textbooks = [];
         
@@ -62,13 +62,22 @@ class DbQuery {
                  strpos(strtolower($textbook->price), strtolower($search_query)) !== False || 
                  strpos(strtolower($textbook->stock), strtolower($search_query)) !== False || 
                  strpos(strtolower($textbook->subject), strtolower($search_query)) !== False || 
-                 strpos(strtolower($textbook->description), strtolower($search_query)) !== False){
+                 strpos(strtolower($textbook->description), strtolower($search_query)) !== False) {
                     $textbooks[] = $textbook;
                 } 
             }
         }
 
         return $textbooks;
+    }
+
+    function getBookByID($bookID) {
+        $conn = $this->makeConnection();
+        $filter = ['book_id' => $bookID];
+        $query = new MongoDB\Driver\Query($filter);
+        $result = $conn->executeQuery(self::DB_NAME . "." . self::PRODUCTS_COLLECTION, $query);
+
+        return $result;
     }
 }
 
