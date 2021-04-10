@@ -6,6 +6,11 @@ body {
 
 hr {
 	border: 1px solid white;
+	width: 100%;
+}
+
+footer {
+	width: 100%;
 }
 
 .header {
@@ -19,14 +24,26 @@ table {
 	margin: 0 auto;
 }
 
-.shipping {
+.shipping,
+.billing,
+.signin,
+.signup {
 	width: 50%;
 	float: left;
 }
 
-.billing {
-	width: 50%;
+.quick-search {
+	width: 60%;
 	float: left;
+}
+
+.custom-search {
+	width: 40%;
+	float: left;
+}
+
+.searchbar {
+	width: 70%;
 }
 
 .button {
@@ -55,4 +72,11 @@ table {
 
 .buttonSearch {
 	padding: 0px 30px;
+}
+
+.buttonCenter {
+	position: relative;
+	left: 50%;
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
 }
