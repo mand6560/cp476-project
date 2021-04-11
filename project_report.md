@@ -31,7 +31,7 @@ Complete (Yes/No) Yes
 ### P2.4 New features and tools
 
 
-Complete (Yes/No)? 
+Complete (Yes/No)? Yes
 
 
 ![P2.4 New features and tools](images/P2.4.png){width=600px}
