@@ -160,6 +160,23 @@ class DbQuery {
         }
     }
 
+    function signIn($email, $pass) {
+        $conn = $this->makeConnection();
+
+        $filter = ['email' => $email, 'pass_hash' => $pass];
+        $query = new MongoDB\Driver\Query($filter);
+        $cursor = $conn->executeQuery(self::DB_NAME . "." . self::CUSTOMERS_COLLECTION, $query);
+        $cursor->rewind();
+        $customer = $cursor->current();
+
+
+        if (!empty($customer)) {
+            return $customer->customer_id;
+        } else {
+            return -1;
+        }
+    }
+
     function createAccount($name, $email, $pass) {
         $conn = $this->makeConnection();
 

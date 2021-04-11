@@ -6,44 +6,67 @@
         <link rel="stylesheet" href="checkout.css">
 
         <script type="text/javascript">
-        function signup() {
-            let first_name = document.getElementById('signup-first').value;
-            let last_name = document.getElementById('signup-last').value;
-            let email = document.getElementById('signup-email').value;
-            let pass = document.getElementById('signup-pass').value;
+            function signin() {
+                let email = document.getElementById('signin-email').value;
+                let pass = document.getElementById('signin-pass').value;
 
-            let full_name = first_name.concat(' ', last_name);
+                let xhttp = new XMLHttpRequest();
 
-            let xhttp = new XMLHttpRequest();
+                xhttp.open("POST", "signIn.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(`email=${email}&pass=${pass}`);
 
-            xhttp.open("POST", "createAccount.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send(`first_name=${first_name}&last_name=${last_name}&email=${email}&pass=${pass}`);
-
-            xhttp.onreadystatechange = function () {
-                if (xhttp.readyState == 4) {
-                    if (xhttp.status == 200) {
-                        if (xhttp.responseText == 'exists') {
-                            alert('Cannot create a new account: Email already in use.');
-                        } else if (xhttp.responseText == 'success') {
-                            alert('Account successfully created!');
-                        } else if (xhttp.responseText == 'fail') {
-                            alert('An unknown error occurred. Please try again later.');
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState == 4) {
+                        if (xhttp.status == 200) {
+                            if (xhttp.responseText == 'success') {
+                                alert('Successfully signed in!');
+                            } else if (xhttp.responseText == 'unknown user') {
+                                alert('Invalid email or password.');
+                            } else {
+                                // alert('An unknown error occurred. Please try again later.'); 
+                                alert(xhttp.responseText);
+                            }
                         } else {
-                            displayCustomerInfo(xhttp.responseText);
+                            alert("An error occurred: " + xhttp.statusText); 
                         }
-                    } else {
-                        displayCustomerInfo("An error occurred: " + xhttp.statusText); 
                     }
-                }
-            };
-        }
+                };
+            }
 
-        function displayCustomerInfo(sText) {
-            var divCustomerInfo = document.getElementById("customerInfo");
-            divCustomerInfo.innerHTML = sText;
-        }
-    </script>
+            function signup() {
+                let first_name = document.getElementById('signup-first').value;
+                let last_name = document.getElementById('signup-last').value;
+                let email = document.getElementById('signup-email').value;
+                let pass = document.getElementById('signup-pass').value;
+
+                let full_name = first_name.concat(' ', last_name);
+
+                let xhttp = new XMLHttpRequest();
+
+                xhttp.open("POST", "createAccount.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(`first_name=${first_name}&last_name=${last_name}&email=${email}&pass=${pass}`);
+
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState == 4) {
+                        if (xhttp.status == 200) {
+                            if (xhttp.responseText == 'exists') {
+                                alert('Cannot create a new account: Email already in use.');
+                            } else if (xhttp.responseText == 'success') {
+                                alert('Account successfully created!');
+                            } else if (xhttp.responseText == 'fail') {
+                                alert('An unknown error occurred. Please try again later.');
+                            } else {
+                                alert('An unknown error occurred.'); 
+                            }
+                        } else {
+                            alert("An error occurred: " + xhttp.statusText); 
+                        }
+                    }
+                };
+            }
+        </script>
     </head>
 
     <body>
@@ -117,7 +140,7 @@
             </div>
 
             <div class="signin">
-                <button class="button buttonCenter" type="button" onclick="alert('Sign in');">Sign in</button>
+                <button class="button buttonCenter" type="button" onclick="signin();">Sign in</button>
             </div>
             
             <div class="signup">
