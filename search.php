@@ -14,14 +14,15 @@
     </style>
     
     <script type="text/javascript">
-        function click(book_id){
+        function sendinfo(book_id, customer_id){
         //    let book = document.getElementById('book').value;
            
            let xhttp = new XMLHttpRequest();
 
            xhttp.open("POST", "addcart.php", true);
-           xhttp.setRequestHandler("Content-type", "application/x-www-form-urlencoded");
-           xhttp.send(`book=${book_id}`);
+           
+           xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+           xhttp.send(`book_id=${book_id}&customer_id=${customer_id}`);
 
            xhttp.onreadystatechange = function () {
                 if (xhttp.readyState == 4) {
@@ -29,10 +30,10 @@
                         if (xhttp.responseText == 'added to cart') {
                             alert('Added to cart');
                         } else {
-                            displayCustomerInfo(xhttp.responseText);
+                            alert('Add to cart failed!');
                         }
                     } else {
-                        displayCustomerInfo("An error occurred: " + xhttp.statusText); 
+                        alert('An error occured'); 
                     }
                 }
             };
@@ -52,6 +53,11 @@
         <div class="search">
             <input type = "Text" placeholder = "Search for textbooks" value = "" name="search_box"/>
             <input class="button buttonSearch" type="submit" value="Search"/>
+        </div>
+    </form>
+    <form action="checkout.php" method="post">
+        <div class="checkout">
+        <input class="button" type="submit" name="checkout_box" value="Checkout"/>
         </div>
     </form>
     <table style="width: 100%">
@@ -91,7 +97,7 @@
                 if($textbook->stock > 0){
                     //onclick="addToCart($customer_id, $textbook->book_id)
                     
-                    echo '<td><input type="submit" value="Add to cart" onclick="click(' . $textbook->book_id .');" class="button" name="cart"/></td></tr>';
+                    echo '<td><input type="submit" value="Add to cart" onclick="sendinfo(' . $textbook->book_id .', ' . $customer_id . ');" class="button" name="cart"/></td></tr>';
                     
                 } else {
                     echo '<td>Sold out!</td></tr>';
