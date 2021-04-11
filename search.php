@@ -30,7 +30,7 @@
                         if (xhttp.responseText == 'added to cart') {
                             alert('Added to cart');
                         } else {
-                            alert('Add to cart failed!');
+                            alert(xhttp.responseText);
                         }
                     } else {
                         alert('An error occured'); 
@@ -78,7 +78,7 @@
         $resultsFound = FALSE;
 
         //TEMP
-        $customer_id = 4;
+        $customer_id = 1;
 
         $name = $_POST['search_box'];
 
