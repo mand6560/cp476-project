@@ -14,6 +14,31 @@
     </style>
     
     <script type="text/javascript">
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+
+            return "";
+        }       
+        
+        async function checkCookie() {
+            if (getCookie("customer_id") == "") {
+                await alert('You are not signed in! Redirecting back to the home page.');
+                window.location.href = './index.php';
+            }
+        }
+
         function sendinfo(book_id, customer_id){
         //    let book = document.getElementById('book').value;
            
@@ -43,7 +68,7 @@
 
 </head>
 
-<body>
+<body onload="checkCookie()">
     <div class="header" onclick="window.location.href = './index.php';">
             <h1>StudentSaver</h1>
             <hr />
