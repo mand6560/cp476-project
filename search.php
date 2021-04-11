@@ -77,8 +77,11 @@
 
         $resultsFound = FALSE;
 
-        //TEMP
-        $customer_id = 1;
+        if(!isset($_COOKIE["customer_id"])) {
+            return;
+        } else {
+            $customer_id = intval($_COOKIE["customer_id"]);
+        }
 
         $name = $_POST['search_box'];
 
