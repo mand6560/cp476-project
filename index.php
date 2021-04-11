@@ -6,6 +6,50 @@
         <link rel="stylesheet" href="checkout.css">
 
         <script type="text/javascript">
+            
+            // Function from w3schools: https://www.w3schools.com/js/js_cookies.asp
+            function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for(var i = 0; i <ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                    }
+                }
+
+                return "";
+            }
+
+            function checkCookie() {
+                let signin = document.getElementById('signin');
+                let signup = document.getElementById('signup');
+                let signin_button = document.getElementById('signin-button');
+                let signup_button = document.getElementById('signup-button');
+
+                let signout_button = document.getElementById('signout-button');
+
+                if (getCookie("customer_id") != "") {
+                    signin.style.display = "none";
+                    signup.style.display = "none";
+                    signin_button.style.display = "none";
+                    signup_button.style.display = "none";
+                    
+                    signout_button.style.display = "block";
+                } else {
+                    signin.style.display = "block";
+                    signup.style.display = "block";
+                    signin_button.style.display = "block";
+                    signup_button.style.display = "block";
+                    
+                    signout_button.style.display = "none";
+                }
+            }
+
             function signin() {
                 let email = document.getElementById('signin-email').value;
                 let pass = document.getElementById('signin-pass').value;
@@ -21,6 +65,7 @@
                         if (xhttp.status == 200) {
                             if (xhttp.responseText == 'success') {
                                 alert('Successfully signed in!');
+                                checkCookie();
                             } else if (xhttp.responseText == 'unknown user') {
                                 alert('Invalid email or password.');
                             } else {
@@ -32,6 +77,8 @@
                         }
                     }
                 };
+
+                
             }
 
             function signup() {
@@ -55,6 +102,7 @@
                                 alert('Cannot create a new account: Email already in use.');
                             } else if (xhttp.responseText == 'success') {
                                 alert('Account successfully created!');
+                                checkCookie();
                             } else if (xhttp.responseText == 'fail') {
                                 alert('An unknown error occurred. Please try again later.');
                             } else {
@@ -66,10 +114,15 @@
                     }
                 };
             }
+
+            function signout() {
+                document.cookie = "customer_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                checkCookie();
+            }
         </script>
     </head>
 
-    <body>
+    <body onload="checkCookie()">
         <div class="header" onclick="window.location.href = './index.php';">
             <h1>StudentSaver</h1>
             <hr />
@@ -96,7 +149,7 @@
             </form>
         </div>
 
-        <div class="signin">
+        <div class="signin" id="signin">
             <h2 style="text-align:center">Sign in:</h2>
                 <table>
                     <tbody>
@@ -113,7 +166,7 @@
                 
             </div>
 
-            <div class="signup">
+            <div class="signup" id="signup">
             <h2 style="text-align:center">Create Account:</h2>
                 <table>
                     <tbody>
@@ -139,12 +192,16 @@
                 
             </div>
 
-            <div class="signin">
+            <div class="signin" id="signin-button">
                 <button class="button buttonCenter" type="button" onclick="signin();">Sign in</button>
             </div>
             
-            <div class="signup">
+            <div class="signup" id="signup-button">
                 <button class="button buttonCenter" type="button" onclick="signup();">Create Account</button>
+            </div>
+
+            <div class="signout" id="signout-button">
+                <button class="button buttonCenter" type="button" onclick="signout();">Sign Out</button>
             </div>
 
             <div id="customerInfo"></div>

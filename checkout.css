@@ -32,6 +32,10 @@ table {
 	float: left;
 }
 
+.signout {
+	width: 100%;
+}
+
 .quick-search {
 	width: 60%;
 	float: left;
