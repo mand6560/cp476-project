@@ -10,8 +10,8 @@
 
 ## Instructions
 
-1. Copy addcart.php, checkout.css, checkout.php, createAccount.php, dbQuery.php, index.php, MDBManager.php, search.php, signIn.php and success.php into a directory located on an Apache web server
+1. Copy website directory containing addcart.php, checkout.css, checkout.php, createAccount.php, dbQuery.php, index.php, MDBManager.php, search.php, signIn.php and success.php into a directory located on an Apache web server
 
-2. Navigate to localhost/directory_from_above/index.php to arrive at the home page
+2. Navigate to localhost/directory_from_above/website/index.php to arrive at the home page
 
 3. Proceed through registering, searching for books, adding them to the cart, and checking out
