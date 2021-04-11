@@ -33,7 +33,7 @@ table {
 }
 
 .signout {
-	width: 100%;
+	clear: both;
 }
 
 .quick-search {
@@ -43,6 +43,7 @@ table {
 
 .custom-search {
 	width: 40%;
+	height: 40px;
 	float: left;
 }
 
