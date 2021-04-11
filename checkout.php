@@ -3,7 +3,7 @@
     <head>
         <title>Checkout - StudentSaver</title>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-        <link rel="stylesheet" href="checkout.css">
+        <link rel="stylesheet" href="style.css">
         <script>
             function getCookie(cname) {
                 var name = cname + "=";

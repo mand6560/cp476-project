@@ -3,7 +3,7 @@
     <head>
         <title>StudentSaver</title>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-        <link rel="stylesheet" href="checkout.css">
+        <link rel="stylesheet" href="style.css">
 
         <script type="text/javascript">
             

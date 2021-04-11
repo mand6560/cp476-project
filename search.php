@@ -4,7 +4,7 @@
 <head>
     <title>Search Results</title>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <link rel="stylesheet" href="checkout.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         table,
         th,
