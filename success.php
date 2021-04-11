@@ -10,7 +10,7 @@
         <?php
             header( "refresh:5;url=index.php" );
         ?>
-        <div class="header">
+        <div class="header" onclick="window.location.href = './index.php';">
             <h1>StudentSaver</h1>
             <hr />
         </div>
